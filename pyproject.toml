@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "comiccraft"
+version = "1.0.0"
+description = "AI Comic Story Creator using Gemini and image generation"
+requires-python = ">=3.10"
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v"

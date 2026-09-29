@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Your Comic - ComicCraft
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container nav-container">
+
+        <a
+            href="/"
+            class="logo"
+        >
+            <span class="logo-icon">✦</span>
+            ComicCraft
+        </a>
+
+        <a
+            href="/"
+            class="nav-button"
+        >
+            Create Another
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="preview-page">
+
+<div class="container">
+
+    <section class="preview-header">
+
+        <div class="hero-badge">
+            ✨ Your Comic Is Ready
+        </div>
+
+        <h1>
+            Your AI-Generated Comic
+        </h1>
+
+        <p>
+            Review each panel below and
+            download your completed comic.
+        </p>
+
+    </section>
+
+
+    {% if test_image %}
+
+    <section class="test-image-card">
+
+        <h2>
+            Image Generation Test
+        </h2>
+
+        <img
+            src="{{ test_image }}"
+            alt="Generated test image"
+        >
+
+    </section>
+
+    {% endif %}
+
+
+    {% if layout %}
+
+    <div class="comic-grid">
+
+        {% for panel in layout %}
+
+        <article class="comic-panel">
+
+            <div class="panel-number">
+                PANEL {{ panel.panel_number }}
+            </div>
+
+
+            <h2>
+                {{ panel.title }}
+            </h2>
+
+
+            <div class="panel-image-wrapper">
+
+                <img
+                    src="{{ panel.image_path }}"
+                    alt="{{ panel.title }}"
+                    class="panel-image"
+                >
+
+            </div>
+
+
+            <div class="panel-content">
+
+                <p class="scene-description">
+                    {{ panel.scene_description }}
+                </p>
+
+
+                <div class="caption-box">
+
+                    <strong>
+                        Caption
+                    </strong>
+
+                    <p>
+                        {{ panel.caption }}
+                    </p>
+
+                </div>
+
+
+                <div class="narration-box">
+
+                    <strong>
+                        Narration
+                    </strong>
+
+                    <p>
+                        {{ panel.narration }}
+                    </p>
+
+                </div>
+
+
+                <div class="dialogue-box">
+
+                    <strong>
+                        Dialogue
+                    </strong>
+
+                    <p>
+                        {{ panel.dialogue }}
+                    </p>
+
+                </div>
+
+
+                <details class="prompt-reference">
+
+                    <summary>
+                        View Image Prompt
+                    </summary>
+
+                    <p>
+                        {{ panel.image_prompt }}
+                    </p>
+
+                </details>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+
+    {% if pdf_url %}
+
+    <section class="download-card">
+
+        <div>
+
+            <span class="download-icon">
+                📄
+            </span>
+
+            <div>
+
+                <h2>
+                    Your Comic PDF Is Ready
+                </h2>
+
+                <p>
+                    Download the complete comic
+                    with all panels and narration.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="{{ pdf_url }}"
+            class="download-button"
+            download
+        >
+            Download Comic PDF
+        </a>
+
+    </section>
+
+    {% endif %}
+
+    {% endif %}
+
+
+    <div class="back-link">
+
+        <a href="/">
+            ← Create another comic
+        </a>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <p>
+            ComicCraft © 2026
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>
